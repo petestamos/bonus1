@@ -1,17 +1,61 @@
-// The anonymous function below will fire on page load
+$(document).ready(function() {
 
-// Some things to consider
-// $.ajax(); to make your requests a little easier. Or the vanilla js way, it's up to you.
-// $.on(); for event handling
-// Remember, selecting elements in jQuery is like selecting them in CSS
-// You'll probably have to manipulate some strings
-// some jQuery functions to help display results
-// $.show(), $.hide(), $.slideup(), $.slidedown(), $.fadein(), $.fadeout()
-// Add content from requests with something like
-// $.html(), $.text(), etc.
-// keyup events could be helpful to get value of field as the user types
+	var terms = [];
+	$(".flexsearch-results-list").hide();
 
-(function() {
-	// Magic!
-	console.log('Keepin\'n it clean with an external script!');
-})();
+///////////////////////////////////////////////////////////////////////////////
+
+	$.ajax({
+
+		url: "http://www.mattbowytz.com/simple_api.json?data=all",
+
+		success: function(data) {
+
+			var data_array = data["data"];
+			var interests = data_array["interests"];
+			var programming = data_array["programming"];
+
+			$.each(interests, function(index, value) {
+				terms.push(value);
+			});
+
+			$.each(programming, function(index, value) {
+				terms.push(value);
+			});
+		}
+	});
+
+///////////////////////////////////////////////////////////////////////////////
+
+	$(".flexsearch-input").on("keyup", function() {
+
+		var text = $(this).val();
+
+		$(".flexsearch-results-list").empty();
+
+		if (text.length == 0) {
+			$(".flexsearch-results-list").hide();
+			return;
+		}
+
+		var counter = 0;
+
+		$.each(terms, function(index, value) {
+			if ((value.length >= text.length) && (value.substring(0, text.length).toLowerCase() == text.toLowerCase())) {
+				$(".flexsearch-results-list").append("<li><a href=\"https://www.google.com/search?q=" + value + "\"><p>" + value + "</p></a></li>");
+				counter++;
+			}
+		});
+
+		if (counter > 0) {
+			$(".flexsearch-results-list").show();
+		}
+	});
+
+///////////////////////////////////////////////////////////////////////////////
+
+	$("#mainForm").on("submit", function(e) {
+		document.location = "https://www.google.com/search?q=" + $(".flexsearch-input").val();
+		return false;
+	});
+});

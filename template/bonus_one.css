@@ -1,7 +1,11 @@
-/*
-  Don't forget to style the results from the search!
-  And anything elese you add to the application, for that matter.
-*/
+html, body {
+  background-color: #F5F5F5;
+	background: transparent url("http://farm8.staticflickr.com/7284/8738887464_affd56ce85_o.png") repeat;
+	background-size: cover;
+  margin: 0;
+}
+
+/*****************************************************************************/
 
 .flexsearch-wrapper {
   height: auto;
@@ -38,11 +42,11 @@
   height: 60px;
   width: 100%;
   padding: 0 46px 0 10px;
-  border-color: #888;
+  border-color: #FFAA66;
   border-radius: 35px;
   border-style: solid;
   border-width: 5px;
-  color: #333;
+  color: #BBB;
   font-family: 'Helvetica', sans-serif;
   font-size: 26px;
   -webkit-appearance: none;
@@ -58,41 +62,72 @@
   height: 60px;
   padding: 0;
   border: none;
-  margin-right: 5px;
+  outline: 0;
+  margin-right: 0px;
   background: transparent;
-  color: #888;
+  color: #BBB;
   font-family: 'Helvetica', sans-serif;
   font-size: 40px;
   line-height: 60px;
 }
 
-.flexsearch-input:focus {
-  outline: none;
-  border-color: #333;
-}
-
 .flexsearch-input:focus.flexsearch-submit {
-  color: #333;
+  color: #AAA;
 }
 
 .flexsearch-submit:hover {
-  color: #333;
+  color: #AAA;
   cursor: pointer;
 }
 
 ::-webkit-input-placeholder {
-  color: #888;
+  color: #BBB;
 }
 
 input:-moz-placeholder {
-  color: #888;
+  color: #BBB;
 }
 
+/*****************************************************************************/
+
 .h1 {
-  color: #333;
-  font-family: 'Helvetica', sans-serif;
-  font-size: 45px;
-  font-weight: bold;
-  line-height: 45px;
+  color: #FFFFFF;
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  line-height: 60px;
   text-align: center;
+  background-color: #FFAA66;
+  margin: 0 0 40px 0;
+  padding: 30px 0;
+}
+
+/*****************************************************************************/
+
+.flexsearch-search-results {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 26px;
+	display: relative;
+	color: #BBB;
+	width: 90%;
+	margin: 0;
+}
+
+.flexsearch-search-results-wrapper {
+	background: none;
+}
+
+.flexsearch-results-list li {
+  list-style-type: none;
+	margin: -15px 0 -20px 0;
+  padding: 0;
+}
+
+.flexsearch-results-list a {
+	text-decoration: none;
+  display: block;
+  color: #BBB;
+}
+
+.flexsearch-results-list a:hover {
+  color: #AAA;
 }
